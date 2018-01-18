@@ -8,3 +8,4 @@ function [m, w] = least_squares(X, b)
 c = Q1' * b;            % intermediate step
 w = R1 \ c;             % solved by backsubstitution
 m = norm(X*w - b);      % the solution of least square
+[n1,n2] = size(w);

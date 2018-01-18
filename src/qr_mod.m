@@ -27,7 +27,13 @@ end
 
 function [v,n] = hh_reflector(x)
 % computes x - norm(x) * eye(size(x,1), 1)
-n = -sign(x(1))*norm(x);
+if (x(1) ~= 0) % handles the case of the first entry 0
+    n = - sign(x(1)) * norm(x);
+else
+    n = - norm(x);
+end
 v = x;
 v(1) = v(1) - n;
-v = v / norm(v);
+if (norm(v) ~= 0) % handles the case of the zero vector
+    v = v / norm(v);
+end
