@@ -1,4 +1,4 @@
-dim = 10;
+dim = 100;
 U = randn(dim, dim);
 U = U'*U;
 u = randn(dim,1);

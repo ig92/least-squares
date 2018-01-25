@@ -10,28 +10,16 @@ function [w] = conjugate_gradient(Q, q, x0, eps)
     ng = norm(g);
     % the first direction is the opposite of the gradient
     d = - g;
-    D = [];
-    R = [];
-    i = 1;
-    G = [];
     while (ng > eps)
         ngs = ng^2; % square of the norm of the gradient
         % this computation avoids computing twice the same thing
-        Qd = Q * d; 
+        Qd = Q*d;
         alpha = ( ngs / (d' * Qd) );    % exact line search
+        x = x + alpha * d;
         g = g + alpha * Qd;             % update of the gradient
-        G = [G g];
-        for j = 1 : i-1
-            gamma = (g'*G(1:end,j))/(G(1:end,j)'*G(1:end,j));
-            g = g - gamma * G(1:end,j)
-        end
-        i = i+1;
         ng = norm(g);
         beta = ng^2 / ngs;              % Fletcher Reeves formula
-        D = [D (d ./ norm(d))];
         d = - g + (beta * d);           % update of the direction
-        R = [R norm(D'*Q*d)];
     end
     w = x;
-    plot(R)
 end

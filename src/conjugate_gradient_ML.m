@@ -1,3 +1,4 @@
+clear
 function [m,w] = conjugate_gradient_ML(X,b)
     Q = X'*X;
     b1 = b(1:end,1);
