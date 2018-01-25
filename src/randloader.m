@@ -1,5 +1,5 @@
-dim = 12;
-U = randn(1000, dim);
+dim = 10;
+U = randn(dim, dim);
 U = U'*U;
 u = randn(dim,1);
 x0 = U * randn(dim,1);
