@@ -1,6 +1,6 @@
 cd /code/matlab/least-squares/src/
 X = csvread('../test/ml_extended.csv');
-b = csvread('../test/ml-output.csv');
+b = csvread('../test/ml_output.csv');
 x0 = csvread('../test/ml_starting.csv');
 Q = X'*X;
 b1 = b(1:end,1);
